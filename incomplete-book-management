@@ -1,0 +1,68 @@
+/*
+define a structure book with:
+title
+author
+price
+number of copies
+
+write functions to:
+
+print books by a given author
+print books with price less than a given value
+print total cost of a book (price*copies)
+
+*/
+
+#include<stdio.h>
+#include<string.h>
+
+struct book
+{
+	char title[50],author[50];
+	int price,nc;
+}n[4];
+
+void author(char author[]);
+void price(int m);
+void cost(char book[]);
+
+void main()
+{
+	int i,max_p;
+	char author[50],book[50];
+	
+	printf("input the details of the book:\n");
+	for(i=0;i<4;i++)
+	{
+		printf("title:\t"); scanf("%s",&n[i].title);
+		printf("author:\t"); scanf("%s",&n[i].author);
+		printf("price:\t"); scanf("%d",&n[i].price);
+		printf("price:\t"); scanf("%d",&n[i].nc);
+	}
+	
+	printf("what author's book do you wish me to fetch ?  ");	scanf("%s",author);
+	author(author);
+	printf("what is the maximum price for you ?  ");	scanf("%d",max_p);
+	price(max_p);
+	printf("what book's total cost do you want me to calculate ?  ");	scanf("%s",book);
+	cost(book);
+	
+	
+}
+
+void price(int m)
+{
+	int i;
+	for(i=0;i<10;i++)
+	{
+		if(n[i].price<m)
+		{
+			printf("name: %s and price: %d",n[i].title,n[i].price);
+		}
+	}
+}
+
+void author(char author[])
+{
+	
+}
