@@ -22,7 +22,7 @@ struct book
 	int price,nc;
 }n[4];
 
-void author(char author[]);
+void writer(char author[]);
 void price(int m);
 void cost(char book[]);
 
@@ -37,14 +37,14 @@ void main()
 		printf("title:\t"); scanf("%s",&n[i].title);
 		printf("author:\t"); scanf("%s",&n[i].author);
 		printf("price:\t"); scanf("%d",&n[i].price);
-		printf("price:\t"); scanf("%d",&n[i].nc);
+		printf("no. of copies:\t"); scanf("%d",&n[i].nc);
 	}
 	
-	printf("what author's book do you wish me to fetch ?  ");	scanf("%s",author);
-	author(author);
-	printf("what is the maximum price for you ?  ");	scanf("%d",max_p);
+	printf("\nwhat author's book do you wish me to fetch ?  ");	scanf("%s",author);
+	writer(author);
+	printf("\nwhat is the maximum price for you ?  ");	scanf("%d",&max_p);
 	price(max_p);
-	printf("what book's total cost do you want me to calculate ?  ");	scanf("%s",book);
+	printf("\nwhat book's total cost do you want me to calculate ?  ");	scanf("%s",book);
 	cost(book);
 	
 	
@@ -53,7 +53,7 @@ void main()
 void price(int m)
 {
 	int i;
-	for(i=0;i<10;i++)
+	for(i=0;i<4;i++)
 	{
 		if(n[i].price<m)
 		{
@@ -62,7 +62,20 @@ void price(int m)
 	}
 }
 
-void author(char author[])
+void writer(char author[])
 {
+}
+
+void cost(char book[])
+{
+	int i, price=0;
+	for(i=0;i<4;i++)
+	{
+		if(strcmp(book,n[i].title)==0)
+		{
+			price=n[i].nc*n[i].price;
+		}
+	}
 	
+	printf("\nthe total cost of the book %s is: %d",book,price);
 }
