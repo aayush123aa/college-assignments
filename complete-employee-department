@@ -1,0 +1,82 @@
+/*
+define a structure called employee with members:
+name
+department
+salary
+
+declare an array of 10 employees.
+write a program to:
+1. read details of all employees.
+2. print department-wise employee list.
+3. display average salary of each department.
+*/
+
+
+#include <stdio.h>
+#include <string.h>
+
+struct employee {
+    char name[50];
+    char department[50];
+    int salary;
+} emp[10];
+
+int main() {
+    int i, j, k = 0, found;
+    char departments[10][50];
+
+    printf("Input the details of 10 employees:\n");
+    for(i = 0; i < 10; i++) {
+        printf("\nEmployee #%d:\nName: ", i + 1);
+        scanf("%s", emp[i].name);
+        printf("Department: ");
+        scanf("%s", emp[i].department);
+        printf("Salary: ");
+        scanf("%d", &emp[i].salary);
+    }
+
+    strcpy(departments[0], emp[0].department);
+    k = 1; 
+
+    for(i = 1; i < 10; i++) {
+        found = 0;
+        for(j = 0; j < k; j++) {
+            if(strcmp(emp[i].department, departments[j]) == 0) {
+                found = 1;
+                break;
+            }
+        }
+        if(!found) {
+            strcpy(departments[k], emp[i].department);
+            k++;
+        }
+    }
+
+    printf("\n--- Department-wise Employee List ---");
+    for(i = 0; i < k; i++) {
+        printf("\n\nDepartment: %s", departments[i]);
+        for(j = 0; j < 10; j++) {
+            if(strcmp(departments[i], emp[j].department) == 0) {
+                printf("\n - %s (Salary: %d)", emp[j].name, emp[j].salary);
+            }
+        }
+    }
+
+    printf("\n\n--- Average Salaries ---");
+    for(i = 0; i < k; i++) {
+        float total_salary = 0;
+        int count = 0;
+        
+        for(j = 0; j < 10; j++) {
+            if(strcmp(departments[i], emp[j].department) == 0) {
+                total_salary += emp[j].salary;
+                count++;
+            }
+        }
+        if(count > 0) {
+            printf("\nAverage salary of %s: %.2f", departments[i], total_salary / count);
+        }
+    }
+
+    return 0;
+}
