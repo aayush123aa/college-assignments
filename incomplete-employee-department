@@ -1,0 +1,86 @@
+/*
+define a structure called employee with members:
+name
+department
+salary
+
+declare an array of 10 employees.
+write a program to:
+1. read details of all employees.
+2. print department-wise employee list.
+3. display average salary of each department.
+*/
+
+
+#include<stdio.h>
+#include<string.h>
+
+struct employee
+{
+	char name[50], department[50];
+	int salary;
+} n[10];
+
+void main()
+{
+	int i,j,k=0;
+	float total_salary=0,z=0;
+	char departments[10][50];
+
+	printf("input the details of all employees:\n");
+	for(i=0;i<10;i++)
+	{
+		printf("employee #%d:\nname:  ",i+1);
+		scanf("%s",&n[i].name);
+		printf("department:  ",i+1);
+		scanf("%s",&n[i].department);
+		printf("salary:  ",i+1);
+		scanf("%d",&n[i].salary);
+	}
+	
+	strcpy(departments[0],n[1].department);
+	
+	for(i=1;i<10;i++)
+	{
+		if(strcmp(departments[k],n[i].department)!=0)
+		{
+			k++;
+			strcpy(departments[k+1],n[i].department);
+			
+		}
+	}
+	
+	for(i=0;i<=k;i++)
+	{
+		printf("\nDepartment : %s",departments[i]);
+				
+		for(j=0;j<10;j++)
+		{
+			if(strcmp(departments[i],n[j].department)==0)
+			{
+				printf("\nName: %s",n[j].name);
+				printf("\nSalary: %d",n[j].salary);
+				
+			}
+		}
+	}
+	
+
+	for(i=0;i<=k;i++)
+	{
+		printf("\nDepartment : %s",departments[i]);
+				
+		for(j=0;j<10;j++)
+		{
+			if(strcmp(departments[i],n[j].department)==0)
+			{
+			total_salary+=n[j].salary;
+			z++;
+			}
+		}
+		printf("\nThe average salary of %s department is: %.2f\n",departments[i],total_salary/z);
+	}
+
+
+	
+}
