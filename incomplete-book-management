@@ -57,13 +57,22 @@ void price(int m)
 	{
 		if(n[i].price<m)
 		{
-			printf("name: %s and price: %d",n[i].title,n[i].price);
+			printf("\nname: %s and price: %d\n",n[i].title,n[i].price);
 		}
 	}
 }
 
 void writer(char author[])
 {
+	int i;
+	for(i=0;i<4;i++)
+	{
+		if(strcmp(author,n[i].author)==0)
+		{
+			printf("\nbook name: %s\n",n[i].title);
+		}
+	}
+	
 }
 
 void cost(char book[])
@@ -77,5 +86,5 @@ void cost(char book[])
 		}
 	}
 	
-	printf("\nthe total cost of the book %s is: %d",book,price);
+	printf("\nthe total cost of the book %s is: %d\n",book,price);
 }
