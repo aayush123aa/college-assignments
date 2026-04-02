@@ -22,8 +22,35 @@ struct personal
 	unsigned:4;
 }
 
+typedef struct personal emp;
 
 void main()
 {
+	int i;
+	emp n[10]={{0,20,0,0},{1,62,1,3},{1,62,1,4},{1,25,0,0},{0,27,1,0},{1,34,1,1},{0,34,1,4},{1,28,1,0},{0,25,1,0},{1,62,0,0}};
+	
+	printf("the male employees are:\n");
+	for(i=0;i<10;i++)
+	{
+		if(n[i].sex==1)
+		{
+			
+		}
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
